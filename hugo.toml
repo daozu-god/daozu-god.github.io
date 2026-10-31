@@ -1,0 +1,30 @@
+baseURL = "https://daozu-god.github.io/"
+title = "Yaohui | Independent Researcher"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+enableRobotsTXT = true
+hasCJKLanguage = true
+[pagination]
+  pagerSize = 10
+[params]
+  name = "Yaohui"
+  initials = "Y"
+  role = "Independent Researcher"
+  github = "https://github.com/daozu-god"
+  description = "Independent research in algebraic complexity, adaptive decision-making, and software security."
+[languages.en]
+  languageName = "English"
+  weight = 1
+  contentDir = "content/en"
+  [languages.en.params]
+    heroTitle = "Researching complexity, decision-making, and secure systems."
+    heroText = "I pursue independent research across mathematical and computational questions, with an emphasis on rigorous analysis and reproducible technical work."
+    researchAreas = ["Algebraic and Bilinear Complexity", "Adaptive Decision Theory and Minimax Methods", "Software and Systems Security"]
+[languages.zh]
+  languageName = "简体中文"
+  weight = 2
+  contentDir = "content/zh"
+  [languages.zh.params]
+    heroTitle = "研究复杂度、决策理论与系统安全。"
+    heroText = "我开展数学与计算领域的独立研究，重视问题定义的严谨性、论证的可靠性以及技术工作的可复现性。"
+    researchAreas = ["代数复杂度与双线性复杂度", "自适应决策理论与极小极大方法", "软件与系统安全"]
