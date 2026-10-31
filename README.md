@@ -6,8 +6,18 @@ Bilingual academic homepage built with Hugo and deployed to GitHub Pages.
 - English: https://daozu-god.github.io/en/
 - 中文: https://daozu-god.github.io/zh/
 
-The complete Hugo source is stored in `academic-researcher-site-source.zip.b64`. The Pages workflow decodes and builds it automatically. Edit the Markdown files under `content/en/` and `content/zh/` after extracting the source locally.
+## Edit the site
+
+Edit the Markdown files under `content/en/` and `content/zh/`. Update site identity and research-area settings in `hugo.toml`.
 
 The public profile uses the name Yaohui and the neutral title Independent Researcher. No degree, institutional appointment, publication, award, or other credential is asserted. Add only accurate, verifiable information.
 
-To enable publishing, open **Settings → Pages** and select **GitHub Actions** as the source. See `academic-researcher-site/README.zh-CN.md` for the detailed Chinese guide.
+## Local preview
+
+Install Hugo 0.167.0 or later, then run `hugo server -D`. Build locally with `hugo --gc --minify`.
+
+## Deployment
+
+The workflow in `.github/workflows/hugo.yaml` builds the site and deploys it to GitHub Pages whenever a commit is pushed to `main`. In the repository, open **Settings → Pages** and choose **GitHub Actions** as the build and deployment source if it is not already selected.
+
+See [README.zh-CN.md](README.zh-CN.md) for the Chinese guide.
