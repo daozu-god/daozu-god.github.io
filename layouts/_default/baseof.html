@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{{ .Description | default .Site.Params.description }}">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+<link rel="stylesheet" href="{{ "css/site.css" | relURL }}">
+<link rel="icon" href="{{ "images/favicon.svg" | relURL }}" type="image/svg+xml">
+</head>
+<body>
+<header class="header"><a class="brand" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Params.name }} <small>{{ .Site.Params.role }}</small></a>
+<nav><a href="{{ "about/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}关于我{{ else }}About{{ end }}</a><a href="{{ "research/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}研究方向{{ else }}Research{{ end }}</a><a href="{{ "publications/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}论文{{ else }}Publications{{ end }}</a><a href="{{ "projects/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}项目{{ else }}Projects{{ end }}</a><a href="{{ "notes/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}笔记{{ else }}Notes{{ end }}</a><a href="{{ "cv/" | relLangURL }}">CV</a><a href="{{ "contact/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}联系{{ else }}Contact{{ end }}</a></nav>
+<div class="lang">{{ if eq .Site.Language.Lang "zh" }}<a href="/en/">EN</a>{{ else }}<a href="/zh/">中文</a>{{ end }}</div></header>
+<main class="container">{{ block "main" . }}{{ end }}</main>
+<footer>© {{ now.Year }} {{ .Site.Params.name }} · Independent Researcher · <a href="https://github.com/daozu-god">GitHub</a></footer>
+</body></html>
