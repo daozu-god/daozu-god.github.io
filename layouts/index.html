@@ -1,0 +1,4 @@
+{{ define "main" }}
+<section class="hero"><p class="eyebrow">INDEPENDENT RESEARCHER</p><h1>{{ .Site.Params.name }}</h1><p class="role">{{ .Site.Params.role }}</p><h2>{{ .Site.Language.Params.heroTitle }}</h2><p class="intro">{{ .Site.Language.Params.heroText }}</p><p><a class="button" href="{{ "research/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}查看研究方向{{ else }}Explore research{{ end }} ↗</a> <a class="button secondary" href="{{ "publications/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}学术论文{{ else }}Publications{{ end }}</a></p></section>
+<section class="section"><p class="eyebrow">RESEARCH INTERESTS</p><h2>{{ if eq .Site.Language.Lang "zh" }}研究方向{{ else }}Research interests{{ end }}</h2><div class="cards">{{ range .Site.Language.Params.researchAreas }}<article><span>—</span><h3>{{ . }}</h3></article>{{ end }}</div></section>
+{{ end }}
