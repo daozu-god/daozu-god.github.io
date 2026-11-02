@@ -1,1 +1,41 @@
-{{ define "main" }}<header class="page"><p class="eyebrow">{{ .Site.Params.role }}</p><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header><div class="prose">{{ .Content }}</div>{{ range .Pages.ByDate.Reverse }}<article class="entry"><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2><p>{{ .Description | default .Summary }}</p></article>{{ end }}{{ end }}
+{{ define "main" }}
+<section class="page-lead">
+  <div class="page-kicker"><a href="{{ .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "zh" }}首页{{ else }}Home{{ end }}</a><span aria-hidden="true">/</span><span>{{ .Title }}</span></div>
+  <div class="page-lead-grid">
+    <div><p class="eyebrow-with-index"><span>ARCHIVE</span><span class="thin-line"></span><span>{{ if eq .Site.Language.Lang "zh" }}学术研究{{ else }}INDEPENDENT SCHOLARSHIP{{ end }}</span></p><h1>{{ .Title }}<span class="accent-dot">.</span></h1></div>
+    <p class="page-deck">{{ .Description | default .Site.Params.description }}</p>
+  </div>
+</section>
+<div class="section-layout">
+  <article class="page-article">
+    <div class="prose">{{ .Content }}</div>
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ with $pages }}
+      <div class="archive-list">
+        {{ range . }}
+          <article class="archive-entry">
+            <div class="entry-overline"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006" }}</time>{{ with .Params.status }}<span>· {{ . }}</span>{{ end }}{{ with .Params.venue }}<span>· {{ . }}</span>{{ end }}</div>
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }} <span aria-hidden="true">↗</span></a></h2>
+            {{ with .Params.authors }}<p class="entry-authors">{{ delimit . ", " }}</p>{{ end }}
+            {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ with .Summary }}<p>{{ . }}</p>{{ end }}{{ end }}
+            <div class="entry-actions">
+              {{ with .Params.doi }}<a href="https://doi.org/{{ . }}" rel="noopener noreferrer">DOI ↗</a>{{ end }}
+              {{ with .Params.pdf }}<a href="{{ . }}">PDF ↗</a>{{ end }}
+              {{ with .Params.bibtex }}<a href="{{ . }}">BibTeX ↗</a>{{ end }}
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    {{ end }}
+  </article>
+  <aside class="page-rail">
+    <div class="rail-eyebrow">{{ if eq .Site.Language.Lang "zh" }}研究导航{{ else }}RESEARCH INDEX{{ end }}</div>
+    <a href="{{ "research/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}研究方向{{ else }}Research interests{{ end }} <span>↗</span></a>
+    <a href="{{ "publications/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}学术论文{{ else }}Publications{{ end }} <span>↗</span></a>
+    <a href="{{ "preprints/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}预印本{{ else }}Preprints{{ end }} <span>↗</span></a>
+    <a href="{{ "projects/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}研究项目{{ else }}Projects{{ end }} <span>↗</span></a>
+    <a href="{{ "notes/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}技术笔记{{ else }}Technical notes{{ end }} <span>↗</span></a>
+    <div class="rail-note">{{ if eq .Site.Language.Lang "zh" }}研究材料以真实、可核验的公开信息为准。{{ else }}Research materials are added only when ready for accurate public release.{{ end }}</div>
+  </aside>
+</div>
+{{ end }}
