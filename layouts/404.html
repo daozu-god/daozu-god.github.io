@@ -1,8 +1,8 @@
 {{ define "main" }}
-<section class="page">
-  <p class="eyebrow">404 / NOT FOUND</p>
-  <h1>{{ if eq .Site.Language.Lang "zh" }}页面不存在{{ else }}Page not found{{ end }}</h1>
-  <p>{{ if eq .Site.Language.Lang "zh" }}你访问的页面可能已移动或不存在。{{ else }}The page may have moved or no longer exists.{{ end }}</p>
-  <a class="button" href="{{ .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "zh" }}返回首页{{ else }}Return home{{ end }} →</a>
+<section class="error-page">
+  <div class="eyebrow-with-index"><span>404</span><span class="thin-line"></span><span>PAGE NOT FOUND</span></div>
+  <h1>{{ if eq .Site.Language.Lang "zh" }}此页尚未写成<span class="accent-dot">.</span>{{ else }}This page is missing<span class="accent-dot">.</span>{{ end }}</h1>
+  <p>{{ if eq .Site.Language.Lang "zh" }}这个链接可能已经移动，或者内容尚未发布。{{ else }}The link may have moved, or the material has not been published yet.{{ end }}</p>
+  <a class="editorial-link editorial-link-strong" href="{{ .Site.Home.RelPermalink }}">← {{ if eq .Site.Language.Lang "zh" }}返回主页{{ else }}Return to home{{ end }}</a>
 </section>
 {{ end }}
