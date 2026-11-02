@@ -1,4 +1,68 @@
 {{ define "main" }}
-<section class="hero"><p class="eyebrow">INDEPENDENT RESEARCHER</p><h1>{{ .Site.Params.name }}</h1><p class="role">{{ .Site.Params.role }}</p><h2>{{ .Site.Language.Params.heroTitle }}</h2><p class="intro">{{ .Site.Language.Params.heroText }}</p><p><a class="button" href="{{ "research/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}查看研究方向{{ else }}Explore research{{ end }} ↗</a> <a class="button secondary" href="{{ "publications/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}学术论文{{ else }}Publications{{ end }}</a></p></section>
-<section class="section"><p class="eyebrow">RESEARCH INTERESTS</p><h2>{{ if eq .Site.Language.Lang "zh" }}研究方向{{ else }}Research interests{{ end }}</h2><div class="cards">{{ range .Site.Language.Params.researchAreas }}<article><span>—</span><h3>{{ . }}</h3></article>{{ end }}</div></section>
+<section class="hero" aria-labelledby="hero-name">
+  <div class="hero-copy">
+    <div class="kicker"><span class="kicker-line"></span>{{ if eq .Site.Language.Lang "zh" }}研究者简介 / PROFILE{{ else }}RESEARCH PROFILE / 001{{ end }}</div>
+    <h1 id="hero-name">Yaohui<span class="hero-point">.</span></h1>
+    <div class="hero-role">{{ if eq .Site.Language.Lang "zh" }}独立研究员 <span class="hero-role-bar">/</span> 理论计算与系统安全{{ else }}Independent Researcher <span class="hero-role-bar">/</span> Mathematical & Computational Research{{ end }}</div>
+    <h2 class="hero-statement">{{ .Site.Language.Params.heroTitle }}</h2>
+    <p class="hero-summary">{{ .Site.Language.Params.heroText }}</p>
+    <div class="hero-actions">
+      <a class="editorial-link editorial-link-strong" href="{{ "research/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}了解我的研究{{ else }}Explore research{{ end }} <span aria-hidden="true">↗</span></a>
+      <a class="editorial-link" href="{{ "about/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}关于我{{ else }}About me{{ end }} <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <aside class="hero-art" aria-label="{{ if eq .Site.Language.Lang "zh" }}研究标识{{ else }}Editorial research monogram{{ end }}">
+    <div class="art-index">RESEARCH / INDEPENDENT</div>
+    <div class="art-rule"></div>
+    <div class="art-initial" aria-hidden="true">Y<span>.</span></div>
+    <div class="art-caption"><span>THEORETICAL COMPUTING</span><span>ALGEBRA · DECISION · SECURITY</span></div>
+    <div class="art-orbit art-orbit-one" aria-hidden="true"></div>
+    <div class="art-orbit art-orbit-two" aria-hidden="true"></div>
+  </aside>
+</section>
+<section class="manifesto-strip" aria-label="Research philosophy">
+  <span class="manifesto-symbol">✳</span>
+  <span>{{ .Site.Language.Params.noteTitle }}</span>
+  <p>{{ .Site.Language.Params.noteText }}</p>
+</section>
+<section class="editorial-section" id="research">
+  <div class="section-intro">
+    <div class="eyebrow-with-index"><span>01</span><span class="thin-line"></span><span>{{ if eq .Site.Language.Lang "zh" }}当前研究领域{{ else }}AREAS OF INQUIRY{{ end }}</span></div>
+    <h2>{{ if eq .Site.Language.Lang "zh" }}研究兴趣<span class="accent-dot">.</span>{{ else }}Research interests<span class="accent-dot">.</span>{{ end }}</h2>
+    <p>{{ if eq .Site.Language.Lang "zh" }}三个相互关联的方向：理解计算的本质、建立可靠的决策方法，并探究复杂系统的安全边界。{{ else }}Three connected directions: understanding computation, designing principled decisions, and examining the security boundaries of complex systems.{{ end }}</p>
+  </div>
+  <div class="research-list">
+    {{ range $i, $name := .Site.Language.Params.researchAreas }}
+      <a class="research-row" href="{{ "research/" | relLangURL }}">
+        <span class="research-number">0{{ add $i 1 }}</span>
+        <span class="research-body"><strong>{{ $name }}</strong><span class="research-detail">{{ index $.Site.Language.Params.researchSummaries $i }}</span></span>
+        <span class="research-arrow" aria-hidden="true">↗</span>
+      </a>
+    {{ end }}
+  </div>
+</section>
+<section class="editorial-section editorial-section-double">
+  <div class="feature-essay">
+    <div class="eyebrow-with-index"><span>02</span><span class="thin-line"></span><span>{{ if eq .Site.Language.Lang "zh" }}研究档案{{ else }}RESEARCH ARCHIVE{{ end }}</span></div>
+    <h2>{{ if eq .Site.Language.Lang "zh" }}论文与预印本<span class="accent-dot">.</span>{{ else }}Publications & preprints<span class="accent-dot">.</span>{{ end }}</h2>
+    <p>{{ if eq .Site.Language.Lang "zh" }}一个持续维护的研究档案，用于整理正式发表的学术论文、公开预印本、技术报告和引用信息。尚未添加经过核验的公开成果。{{ else }}A curated record for formally published papers, public preprints, technical reports and verified citation details. No public research records have been added yet.{{ end }}</p>
+    <div class="stacked-links">
+      <a href="{{ "publications/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}学术论文{{ else }}Published work{{ end }} <span>↗</span></a>
+      <a href="{{ "preprints/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}预印本与技术报告{{ else }}Preprints & technical reports{{ end }} <span>↗</span></a>
+    </div>
+  </div>
+  <div class="feature-essay feature-essay-secondary">
+    <div class="eyebrow-with-index"><span>03</span><span class="thin-line"></span><span>{{ if eq .Site.Language.Lang "zh" }}研究实践{{ else }}RESEARCH PRACTICE{{ end }}</span></div>
+    <h2>{{ if eq .Site.Language.Lang "zh" }}项目与笔记<span class="accent-dot">.</span>{{ else }}Projects & notes<span class="accent-dot">.</span>{{ end }}</h2>
+    <p>{{ if eq .Site.Language.Lang "zh" }}研究不仅存在于最终论文中。研究项目、证明过程、实验记录与技术分析同样值得被审慎记录。{{ else }}Research is more than its final papers. Projects, proof ideas, experimental records and technical investigations deserve a careful public record, too.{{ end }}</p>
+    <div class="stacked-links">
+      <a href="{{ "projects/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}研究项目{{ else }}Research projects{{ end }} <span>↗</span></a>
+      <a href="{{ "notes/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}技术笔记{{ else }}Technical notes{{ end }} <span>↗</span></a>
+    </div>
+  </div>
+</section>
+<section class="contact-ribbon">
+  <span>{{ if eq .Site.Language.Lang "zh" }}学术交流 / CORRESPONDENCE{{ else }}OPEN TO DISCUSSION / CORRESPONDENCE{{ end }}</span>
+  <div><p>{{ .Site.Language.Params.availability }}</p><a href="{{ "contact/" | relLangURL }}">{{ if eq .Site.Language.Lang "zh" }}联系我{{ else }}Get in touch{{ end }} <span aria-hidden="true">↗</span></a></div>
+</section>
 {{ end }}

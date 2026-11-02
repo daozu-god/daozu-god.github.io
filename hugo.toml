@@ -4,27 +4,53 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 enableRobotsTXT = true
 hasCJKLanguage = true
+disableKinds = []
+
 [pagination]
   pagerSize = 10
+
 [params]
   name = "Yaohui"
   initials = "Y"
   role = "Independent Researcher"
   github = "https://github.com/daozu-god"
-  description = "Independent research in algebraic complexity, adaptive decision-making, and software security."
+  email = ""
+  orcid = ""
+  googleScholar = ""
+  description = "Independent research in algebraic complexity, adaptive decision-making, and software and systems security."
+
 [languages.en]
-  languageName = "English"
+  label = "English"
+  locale = "en-US"
   weight = 1
   contentDir = "content/en"
   [languages.en.params]
-    heroTitle = "Researching complexity, decision-making, and secure systems."
-    heroText = "I pursue independent research across mathematical and computational questions, with an emphasis on rigorous analysis and reproducible technical work."
+    heroTitle = "Questions at the boundaries of mathematics and computation."
+    heroText = "Independent research in algebraic complexity, adaptive decision-making, and software security. I am interested in difficult, precisely formulated questions and what it takes to resolve them rigorously."
     researchAreas = ["Algebraic and Bilinear Complexity", "Adaptive Decision Theory and Minimax Methods", "Software and Systems Security"]
+    researchSummaries = [
+      "Bilinear maps, tensor rank, algebraic algorithms and the limits of efficient computation.",
+      "Information-efficient algorithms, adaptive observations and rigorous equilibrium guarantees.",
+      "Software component analysis, reproducible security research and responsible disclosure."
+    ]
+    noteTitle = "Working across disciplines"
+    noteText = "Theory provides the questions. Computation sharpens them. Careful technical work makes the answers useful."
+    availability = "Open to research correspondence and thoughtful collaboration."
+
 [languages.zh]
-  languageName = "简体中文"
+  label = "简体中文"
+  locale = "zh-CN"
   weight = 2
   contentDir = "content/zh"
   [languages.zh.params]
-    heroTitle = "研究复杂度、决策理论与系统安全。"
-    heroText = "我开展数学与计算领域的独立研究，重视问题定义的严谨性、论证的可靠性以及技术工作的可复现性。"
+    heroTitle = "探索数学与计算交界处的困难问题。"
+    heroText = "独立研究代数复杂度、自适应决策理论与软件安全。我关注定义精确且富有挑战性的问题，并致力于给出经得起检验的严谨论证。"
     researchAreas = ["代数复杂度与双线性复杂度", "自适应决策理论与极小极大方法", "软件与系统安全"]
+    researchSummaries = [
+      "双线性映射、张量秩、代数算法与高效计算的理论极限。",
+      "有限信息下的自适应算法、主动观测与具有严格保证的均衡计算。",
+      "软件组件安全、可复现漏洞研究与负责任披露。"
+    ]
+    noteTitle = "跨越学科边界的研究"
+    noteText = "理论提出值得研究的问题，计算使其逐渐清晰，而严谨的技术实践让结论具有价值。"
+    availability = "欢迎学术交流与严肃的研究合作。"

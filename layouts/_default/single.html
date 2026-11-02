@@ -1,1 +1,20 @@
-{{ define "main" }}<article class="page"><p class="eyebrow">{{ .Section }}</p><h1>{{ .Title }}</h1><div class="prose">{{ .Content }}</div></article>{{ end }}
+{{ define "main" }}
+<article class="longform">
+  <div class="page-kicker"><a href="{{ .Site.Home.RelPermalink }}">Home</a><span>/</span><a href="{{ .Parent.RelPermalink }}">{{ .Section }}</a><span>/</span><span>{{ .Title }}</span></div>
+  <header class="longform-head">
+    <p class="eyebrow-with-index"><span>{{ .Section | upper }}</span><span class="thin-line"></span>{{ with .Params.status }}<span>{{ . }}</span>{{ else }}<span>RESEARCH RECORD</span>{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="longform-abstract">{{ . }}</p>{{ end }}
+    <div class="article-metadata">
+      {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "02 January 2006" }}</time>{{ end }}
+      {{ with .Params.authors }}<span>{{ delimit . ", " }}</span>{{ end }}
+      {{ with .Params.venue }}<span>{{ . }}</span>{{ end }}
+      {{ with .Params.doi }}<a href="https://doi.org/{{ . }}">DOI ↗</a>{{ end }}
+      {{ with .Params.pdf }}<a href="{{ . }}">PDF ↗</a>{{ end }}
+      {{ with .Params.bibtex }}<a href="{{ . }}">BibTeX ↗</a>{{ end }}
+    </div>
+  </header>
+  <div class="prose prose-longform">{{ .Content }}</div>
+  <div class="article-end"><a href="{{ .Parent.RelPermalink }}">← {{ if eq .Site.Language.Lang "zh" }}返回目录{{ else }}Back to collection{{ end }}</a></div>
+</article>
+{{ end }}
